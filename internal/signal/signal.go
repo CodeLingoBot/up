@@ -27,7 +27,7 @@ func Add(fn Func) {
 }
 
 // trap signals to invoke callbacks and exit.
-func trap(ch chan os.Signal) {
+func trap(ch <-chan os.Signal) {
 	<-ch
 	for _, fn := range fns {
 		if err := fn(); err != nil {
